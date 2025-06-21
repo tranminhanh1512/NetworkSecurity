@@ -23,6 +23,8 @@ from sklearn.ensemble import (
 )
 
 import mlflow
+import dagshub
+dagshub.init(repo_owner='tranminhanh1512', repo_name='NetworkSecurity', mlflow=True)
 
 class ModelTrainer:
     def __init__(self, model_trainer_config: ModelTrainerConfig,
@@ -64,20 +66,20 @@ class ModelTrainer:
         params = {
            "Decision Tree": {
                 'criterion':['gini', 'entropy', 'log_loss'],
-                #'splitter':['best','random'],
-                #'max_features':['sqrt','log2'],
+                'splitter':['best','random'],
+                'max_features':['sqrt','log2'],
             },
             "Random Forest":{
-                #'criterion':['gini', 'entropy', 'log_loss'],
-                #'max_features':['sqrt','log2',None],
+                'criterion':['gini', 'entropy', 'log_loss'],
+                'max_features':['sqrt','log2',None],
                 'n_estimators': [128,256]
             },
             "Gradient Boosting":{
-                #'loss':['log_loss', 'exponential'],
+                'loss':['log_loss', 'exponential'],
                 'learning_rate':[.1,.01,.05],
                 'subsample':[0.7,0.8,0.9],
-                #'criterion':['squared_error', 'friedman_mse'],
-                #'max_features':['auto','sqrt','log2'],
+                'criterion':['squared_error', 'friedman_mse'],
+                'max_features':['auto','sqrt','log2'],
                 'n_estimators': [64,128,256]
             },
             "Logistic Regression":{},
@@ -118,6 +120,8 @@ class ModelTrainer:
 
         Network_Model = NetworkModel(preprocessor=preprocessor, model=best_model)
         save_object(file_path=self.model_trainer_config.trained_model_file_path, obj=Network_Model)
+
+        save_object("final_models/model.pkl", best_model)
 
         # Model Trainer Artifact
         model_trainer_artifact = ModelTrainerArtifact(trained_model_file_path=self.model_trainer_config.trained_model_file_path, 
