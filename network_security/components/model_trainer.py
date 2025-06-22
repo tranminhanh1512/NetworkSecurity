@@ -1,4 +1,5 @@
 import os, sys
+from urllib.parse import urlparse
 
 from network_security.exception.exception import NetworkSecurityException
 from network_security.logging.logger import logging
@@ -54,7 +55,9 @@ class ModelTrainer:
             mlflow.sklearn.log_model(best_model, "model")
 
     def train_model(self, X_train, y_train, X_test, y_test):
-        
+        #mlflow.set_registry_uri("https://dagshub.com/tranminhanh1512/NetworkSecurity.mlflow")
+        #tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
+
         models = {
             "Random Forest": RandomForestClassifier(verbose = 1),
             "Decision Tree": DecisionTreeClassifier(),

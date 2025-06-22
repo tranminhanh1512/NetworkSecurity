@@ -7,6 +7,8 @@ pymongo[srv]==3.11
 scikit-learn
 dill
 pyaml
-mlflow
+mlflow==2.20
 dagshub
+fastapi
+uvicorn
 ##-e .
