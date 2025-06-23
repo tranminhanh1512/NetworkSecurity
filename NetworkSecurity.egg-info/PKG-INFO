@@ -1,0 +1,21 @@
+Metadata-Version: 2.4
+Name: NetworkSecurity
+Version: 0.0.1
+Author: Anh Minh Tran
+Author-email: minhanhtrand10pdp@gmail.com
+Requires-Dist: python-dotenv
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: pymongo
+Requires-Dist: certifi
+Requires-Dist: pymongo[srv]==3.11
+Requires-Dist: scikit-learn
+Requires-Dist: dill
+Requires-Dist: pyaml
+Requires-Dist: mlflow==2.20
+Requires-Dist: dagshub
+Requires-Dist: fastapi
+Requires-Dist: uvicorn
+Dynamic: author
+Dynamic: author-email
+Dynamic: requires-dist
