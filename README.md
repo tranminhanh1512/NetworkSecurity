@@ -137,6 +137,6 @@ The project uses GitHub Actions for CI/CD, defined in `.github/workflows/main.ym
   - Maps port 8080 for public access.
 - Clean previous images and containers: Cleans up unused Docker containers, images, and other resources to free disk space.
 ## Final Result
-![image]<img width="1115" alt="Screenshot 2025-06-22 at 22 34 12" src="https://github.com/user-attachments/assets/8ae4b638-ee78-4da1-8ab2-96c573a14301" />
+<img width="1115" alt="Screenshot 2025-06-22 at 22 34 12" src="https://github.com/user-attachments/assets/8ae4b638-ee78-4da1-8ab2-96c573a14301" />
 
 
