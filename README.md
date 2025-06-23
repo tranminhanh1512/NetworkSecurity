@@ -14,21 +14,16 @@ This project is a FastAPI-based web application designed for network security ta
 ├── requirements.txt             # List of required Python packages
 ├── setup.py                     # Setup script for packaging the application
 ├── test_mongodb.py              # Script to test MongoDB connectivity
-
 ├── .github/
 │   └── workflows/
 │       └── main.yml             # GitHub Actions workflow for CI/CD
-
 ├── data_schema/
 │   └── schema.yaml              # YAML file specifying data schema
-
 ├── final_models/                # Serialized ML model and preprocessor
 │   ├── model.pkl                # Trained ML model
 │   └── preprocessor.pkl         # Preprocessing pipeline
-
 ├── network_data/
 │   └── phisingData.csv          # Example phishing dataset
-
 ├── network_security/            # Core application package
 │   ├── __init__.py              # Package initializer
 │   ├── cloud/                   # Cloud-related utilities (e.g., S3 sync)
