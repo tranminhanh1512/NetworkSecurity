@@ -62,6 +62,7 @@ This project is a FastAPI-based web application designed for network security ta
 └── templates/                   # HTML templates for rendering FastAPI views
 ```
 ## Set Up Instruction
+
 ### 1. Clone the repository
 ```
 git clone https://github.com/<your-username>/NetworkSecurity.git
@@ -87,9 +88,20 @@ AWS_ECR_LOGIN_URI = your_ecr_uri
 python app.py
 ```
 You access the API documentation at http://127.0.0.1:8000/docs.
-### Optional: Run the application in AWS S3 EC2 Instance
-- Step 1: Create an EC2 Instance
-- Step 2: Connect to the EC2 Instance & Set Up Docker
+
+## Docker Instructions
+### 1. Build Docker Image
+```
+docker build -t network-security .
+```
+### 2. Run Docker Container
+```
+docker run -d -p 8000:8000 --env-file .env network-security
+```
+
+## Run the application in AWS S3 EC2 Instance Instructions
+### 1. Create an EC2 Instance
+### 2. Connect to the EC2 Instance & Set Up Docker
 Run the following command:
 ```
 # Optional: Update system
@@ -104,14 +116,14 @@ sudo sh get-docker.sh
 sudo usermod -aG docker ubuntu
 newgrp docker
 ```
-- Step 3: Set Up GitHub Actions Self-Hosted Runner
+### 3. Set Up GitHub Actions Self-Hosted Runner
   - Go to your GitHub repo → Settings → Actions → Runners
   - Click "New self-hosted runner"
     - Choose:
     - OS: Linux
     - Architecture: x64
   - Copy and run the commands on your EC2
-- Step 4:  Push Code to GitHub and Open the App in EC2 instance
+### 4.  Push Code to GitHub and Open the App in EC2 instance
 ## CI/CD Pipeline
 The project uses GitHub Actions for CI/CD, defined in `.github/workflows/main.yml`.  is structured into three main stages:
 ### Continuous Integration (CI)
