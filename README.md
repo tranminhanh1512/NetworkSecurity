@@ -74,14 +74,9 @@ python -m venv venv
 source venv/bin/activate  
 pip install -r requirements.txt
 ```
-### 3. Set Up Environment Variables in .env file and in Github Secret
+### 3. Set Up Environment Variables in .env file 
 ```
 MONGO_DB_URL = your_mongo_db_url
-AWS_ACCESS_KEY_ID = your_acess_key_id
-AWS_SECRET_ACCESS_KEY = your_access_key
-AWS_REGION = your_region
-ECR_REPOSITORY_NAME = your_ecr_repo_name
-AWS_ECR_LOGIN_URI = your_ecr_uri
 ```
 ### 4. Run the application in your local machine
 ```
@@ -99,9 +94,25 @@ docker build -t network-security .
 docker run -d -p 8000:8000 --env-file .env network-security
 ```
 
-## Run the application in AWS S3 EC2 Instance Instructions
-### 1. Create an EC2 Instance
-### 2. Connect to the EC2 Instance & Set Up Docker
+## AWS-CICD-Deployment-with-Github-Actions Instructions
+### 1. Login to AWS console.
+### 2. Create IAM user for deployment
+#### With specific access
+1. EC2 access : It is virtual machine
+2. ECR: Elastic Container registry to save your docker image in aws
+#### Description: About the deployment
+1. Build docker image of the source code
+2. Push your docker image to ECR
+3. Launch Your EC2 
+4. Pull Your image from ECR in EC2
+5. Lauch your docker image in EC2
+#### Policy:
+1. AmazonEC2ContainerRegistryFullAccess
+2. AmazonEC2FullAccess
+### 3. Create ECR repo to store/save docker image
+### 4. Create EC2 machine (Ubuntu)
+### 5. Open EC2 and Install docker in EC2 Machine
+
 Run the following command:
 ```
 # Optional: Update system
@@ -116,14 +127,22 @@ sudo sh get-docker.sh
 sudo usermod -aG docker ubuntu
 newgrp docker
 ```
-### 3. Set Up GitHub Actions Self-Hosted Runner
+### 6. Set Up GitHub Actions and Configure EC2 as Self-hosted runner
   - Go to your GitHub repo → Settings → Actions → Runners
   - Click "New self-hosted runner"
     - Choose:
     - OS: Linux
     - Architecture: x64
   - Copy and run the commands on your EC2
-### 4.  Push Code to GitHub and Open the App in EC2 instance
+### 7. Set up Github Secrets
+```
+AWS_ACCESS_KEY_ID = your_acess_key_id
+AWS_SECRET_ACCESS_KEY = your_access_key
+AWS_REGION = your_region
+ECR_REPOSITORY_NAME = your_ecr_repo_name
+AWS_ECR_LOGIN_URI = your_ecr_uri
+```
+### 8.  Push Code to GitHub and Open the App in EC2 instance
 ## CI/CD Pipeline
 The project uses GitHub Actions for CI/CD, defined in `.github/workflows/main.yml`.  is structured into three main stages:
 ### Continuous Integration (CI)
